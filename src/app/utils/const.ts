@@ -1,0 +1,15 @@
+export const routes = {
+  home: "/",
+  contact: "/contact",
+  about: "/about",
+  singup: "/signup",
+  login: "/login",
+  whishlist: "/whishlist",
+  cart: "/cart",
+  checkout: "/checkout",
+  account: "/account",
+  myprofile: "/account/myprofile",
+  myaddressbook: "/account/myaddressbook",
+  mypaymentoption: "/account/paymentoption",
+  productdetails: "/productdetails",
+};

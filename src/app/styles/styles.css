@@ -1,0 +1,99 @@
+.resContainer {
+  width: 1440px;
+  max-width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 640px) {
+  .resContainer {
+    width: 90%;
+    max-width: 90%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .resContainer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+.resContainer2 {
+  width: 1440px;
+  max-width: 90%;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 1023px) {
+  .resContainer2 {
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .resContainer2 {
+    width: 90%;
+    max-width: 90%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .resContainer2 {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+/*HomeHero swiper css  */
+.swiper-pagination-bullet {
+  background: gray !important;
+  width: var(
+    --swiper-pagination-bullet-width,
+    var(--swiper-pagination-bullet-size, 12px)
+  ) !important;
+  height: var(
+    --swiper-pagination-bullet-height,
+    var(--swiper-pagination-bullet-size, 12px)
+  ) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--swiper-pagination-bullet-active-color, #db4444) !important;
+  width: var(
+    --swiper-pagination-bullet-width,
+    var(--swiper-pagination-bullet-size, 14px)
+  ) !important;
+  height: var(
+    --swiper-pagination-bullet-height,
+    var(--swiper-pagination-bullet-size, 14px)
+  ) !important;
+  border: 2px white solid;
+}
+
+/* Innovator swiper --about page  */
+
+/* hide ul scrollbar  */
+
+ul::-webkit-scrollbar {
+  display: none;
+}
+
+.checkoutRadio > input[type="radio"] {
+  accent-color: #232323;
+}
+
+.productDetailradio1 > input[type="radio"] {
+  accent-color: #a0bce0;
+}
+
+.productDetailradio2 > input[type="radio"] {
+  accent-color: #e07575;
+}
+
+/* browseByCategoriesSlider  */
