@@ -18,8 +18,8 @@ interface ICard {
     image: string | StaticImageData;
     title: string;
     oldPrice?: number | string;
-    newPrice?: number | string;
-    rating?: number | string;
+    newPrice?: number | string | undefined;
+    rating?: number | string | undefined;
     discount?: string;
     condition?: string;
     color?: string;
@@ -32,7 +32,11 @@ export const WhishListCard = ({ item }: any): React.ReactElement => {
   const disptach = useDispatch<Dispatch>();
 
   const handleAddToCard = (item: ICard["item"]) => {
-    disptach(addToCart(item));
+    const safeItem = {
+      ...item,
+      newPrice: item.newPrice ?? 0, // Default to 0 if undefined
+    };
+    disptach(addToCart(safeItem));
   };
 
   const handleRemoveCard = (title: string) => {

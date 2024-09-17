@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { StaticImageData } from "next/image";
 
 // Define the type for a cart item (same structure as the `item` in your component)
 interface CartItem {
   id?: number;
-  image: string;
+  image: string | StaticImageData;
   title: string;
   oldPrice?: number | string;
-  newPrice: number | string;
-  rating: number | string;
+  newPrice: number | string | undefined;
+  rating?: number | string | undefined;
   discount?: string;
   condition?: string;
   color?: string;
