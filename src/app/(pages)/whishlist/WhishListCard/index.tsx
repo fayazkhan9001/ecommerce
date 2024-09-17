@@ -10,6 +10,7 @@ import { BsTrash3 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { addToList, removeFromList } from "@/lib/features/whishLIstSlice";
 import { addToCart } from "@/lib/features/cartSlice";
+import { Dispatch } from "@reduxjs/toolkit";
 
 interface ICard {
   item: {
@@ -28,7 +29,7 @@ interface ICard {
 }
 
 export const WhishListCard = ({ item }: any): React.ReactElement => {
-  const disptach = useDispatch();
+  const disptach = useDispatch<Dispatch>();
 
   const handleAddToCard = (item: ICard["item"]) => {
     disptach(addToCart(item));

@@ -8,7 +8,8 @@ import { Key } from "react";
 import { useSelector } from "react-redux";
 
 const CartPage = (): React.ReactElement => {
-  const { cart } = useSelector((state) => state.cart);
+  const { cart } = useSelector((state: any) => state.cart);
+  console.log(cart);
 
   return (
     <>

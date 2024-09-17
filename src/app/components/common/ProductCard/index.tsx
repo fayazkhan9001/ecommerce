@@ -10,8 +10,9 @@ import Link from "next/link";
 import { routes } from "@/app/utils/const";
 
 import { addToCart } from "@/lib/features/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToList } from "@/lib/features/whishLIstSlice";
+import { Dispatch } from "@reduxjs/toolkit";
 
 interface ICard {
   item: {
@@ -28,18 +29,15 @@ interface ICard {
 }
 
 export const ProductCard = ({ item }: ICard): React.ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<Dispatch>();
 
-  const productAddToCart = (item: { item: ICard }) => {
-    const newItem = {
-      ...item,
-      id: Date.now(),
-    };
-    dispatch(addToCart(newItem));
+  // Change the type to ICard["item"] since you're passing the actual item
+  const productAddToCart = (item: ICard["item"]) => {
+    dispatch(addToCart(item)); // No need to wrap item inside another object
   };
 
   const productAddToWhisList = (item: ICard["item"]) => {
-    dispatch(addToList(item));
+    dispatch(addToList(item)); // Pass item directly
   };
 
   return (
@@ -54,9 +52,7 @@ export const ProductCard = ({ item }: ICard): React.ReactElement => {
             className="!w-full !h-full object-contain"
           />
           {item.discount ? (
-            <div
-              className={` w-[40px] h-[18px] sm:w-[55px] sm:h-[26px] bg-primary text-white flex items-center justify-center rounded-md absolute top-2 left-2`}
-            >
+            <div className="w-[40px] h-[18px] sm:w-[55px] sm:h-[26px] bg-primary text-white flex items-center justify-center rounded-md absolute top-2 left-2">
               <Typography variant="ExtraSmallRegular">
                 {item.discount}
               </Typography>
@@ -65,9 +61,7 @@ export const ProductCard = ({ item }: ICard): React.ReactElement => {
             ""
           )}
           {item.condition ? (
-            <div
-              className={` w-[40px] h-[18px] sm:w-[55px] sm:h-[26px] bg-button text-white flex items-center justify-center rounded-md absolute top-2 left-2`}
-            >
+            <div className="w-[40px] h-[18px] sm:w-[55px] sm:h-[26px] bg-button text-white flex items-center justify-center rounded-md absolute top-2 left-2">
               <Typography variant="ExtraSmallRegular">
                 {item?.condition}
               </Typography>
@@ -78,17 +72,17 @@ export const ProductCard = ({ item }: ICard): React.ReactElement => {
         </Link>
         <div className="absolute top-2 right-2 flex flex-col gap-y-3">
           <div
-            className=" w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full bg-white transition-all duration-500 hover:bg-primary hover:text-white flex items-center justify-center"
+            className="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full bg-white transition-all duration-500 hover:bg-primary hover:text-white flex items-center justify-center"
             onClick={() => productAddToWhisList(item)}
           >
             <IoMdHeartEmpty className="w-4 cursor-pointer" />
           </div>
-          <div className=" w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full bg-white transition-all duration-500 hover:bg-primary hover:text-white flex items-center justify-center">
+          <div className="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] rounded-full bg-white transition-all duration-500 hover:bg-primary hover:text-white flex items-center justify-center">
             <IoEyeOutline className="w-4 cursor-pointer" />
           </div>
         </div>
         <div
-          className="absolute bottom-0 left-0 p-2 w-full rounded-b-md bg-secondary text-white text-center  hidden group-hover:block cursor-pointer"
+          className="absolute bottom-0 left-0 p-2 w-full rounded-b-md bg-secondary text-white text-center hidden group-hover:block cursor-pointer"
           onClick={() => productAddToCart(item)}
         >
           <Typography variant="bodyMedium">Add To Cart</Typography>
@@ -118,7 +112,7 @@ export const ProductCard = ({ item }: ICard): React.ReactElement => {
               <span className="w-[16px] h-[16px] rounded-full group-hover:border-2 group-hover:border-white group-hover:transition-all group-hover:duration-100 absolute"></span>
             </span>
             <span className="w-[20px] h-[20px] rounded-full bg-black group relative flex justify-center items-center">
-              <span className="w-[16px] h-[16px] rounded-full group-hover:border-2 group-hover:border-white  group-hover:transition-all group-hover:duration-100 absolute"></span>
+              <span className="w-[16px] h-[16px] rounded-full group-hover:border-2 group-hover:border-white group-hover:transition-all group-hover:duration-100 absolute"></span>
             </span>
           </div>
         ) : (

@@ -7,7 +7,7 @@ import { WhishListCard } from "./WhishListCard";
 import { useSelector } from "react-redux";
 
 const WhishListPage = () => {
-  const { whishList } = useSelector((a) => a.whishList);
+  const { whishList } = useSelector((a: any) => a.whishList);
 
   return (
     <>
@@ -24,7 +24,7 @@ const WhishListPage = () => {
           </div>
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-x-5 lg:gap-8 xl:gap-4">
-              {whishList.map((item, index) => (
+              {whishList.map((item: { item: string }, index: keyof {}) => (
                 <div key={index}>
                   <WhishListCard item={item} />
                 </div>
