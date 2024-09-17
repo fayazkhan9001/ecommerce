@@ -2,7 +2,12 @@ import React from "react";
 import { useTimer } from "react-timer-hook";
 import { Typography } from "../../common";
 
-export default function HomeTimer({ expiryTimestamp }) {
+// Define the props type
+interface HomeTimerProps {
+  expiryTimestamp: Date;
+}
+
+export default function HomeTimer({ expiryTimestamp }: HomeTimerProps) {
   const { totalSeconds, seconds, minutes, hours, days, isRunning } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),

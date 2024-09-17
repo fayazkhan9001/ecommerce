@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the IItem interface for whishList items
+// Define the IItem interface for wishlist items
 interface IItem {
   title: string;
-  quantity: number;
+  quantity?: number;
 }
 
 // Define the initial state structure
@@ -29,7 +29,12 @@ export const whishListSlice = createSlice({
 
       if (itemIndex !== -1) {
         // If item already exists, increment quantity
-        state.whishList[itemIndex].quantity += 1;
+        // Remove optional chaining and use safe access
+        if (state.whishList[itemIndex].quantity) {
+          state.whishList[itemIndex].quantity += 1;
+        } else {
+          state.whishList[itemIndex].quantity = 1; // Initialize if not set
+        }
       } else {
         // Add the new item with quantity 1
         state.whishList.push({

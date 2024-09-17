@@ -17,7 +17,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 interface ICard {
   item: {
     id?: number;
-    image: string;
+    image: string | StaticImageData;
     title: string;
     oldPrice?: number | string;
     newPrice: number | string;
@@ -25,7 +25,7 @@ interface ICard {
     discount?: string;
     condition?: string;
     color?: string;
-    quantity: number;
+    quantity?: number;
   };
 }
 

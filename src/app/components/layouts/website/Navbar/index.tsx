@@ -7,6 +7,7 @@ import {
 } from "@/app/components/common";
 import { routes } from "@/app/utils/const";
 import { menus } from "@/app/utils/data";
+import { Rootstate } from "@/lib/store";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,16 +17,17 @@ import { FiUser } from "react-icons/fi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline, IoCloseCircleOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useSelector } from "react-redux";
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const Navbar = (): React.ReactElement => {
+  const useTypedSelector: TypedUseSelectorHook<Rootstate> = useSelector;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [heart, setHeart] = useState<boolean>(false);
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);
   const [dropDown, setDropDown] = useState<boolean>(false);
   const pathname = usePathname();
-  const { cart } = useSelector((b) => b.cart);
-  const { whishList } = useSelector((a) => a.whishList);
+  const { cart } = useTypedSelector((state) => state.cart);
+  const { whishList } = useTypedSelector((state) => state.whishList);
 
   return (
     <>
