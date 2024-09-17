@@ -67,7 +67,7 @@ export const Navbar = (): React.ReactElement => {
               ))}
 
               <IoCloseCircleOutline
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsOpen(true)}
                 className="absolute top-4 right-4 text-2xl lg:hidden"
               />
             </ul>
@@ -75,7 +75,11 @@ export const Navbar = (): React.ReactElement => {
             <div className="flex items-center justify-between gap-x-2 md:gap-x-4 ">
               <div className="flex items-center sm:hidden">
                 <div className="flex items-center relative rounded-lg bg-[#F5F5F5]">
-                  {isOpenSearch ? <NavSearchModal setIsOpen={setIsOpen} /> : ""}
+                  {isOpenSearch ? (
+                    <NavSearchModal setIsOpenSearch={setIsOpenSearch} />
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <CiSearch
                   className="text-2xl cursor-pointer"
@@ -93,11 +97,13 @@ export const Navbar = (): React.ReactElement => {
               </div>
 
               <div className="relative">
-                {
+                {whishList.length > 0 ? (
                   <span className="absolute bottom-3 left-3 w-4 h-4 bg-primary text-white rounded-full flex items-center justify-center text-[12px]">
                     {whishList.length}
                   </span>
-                }
+                ) : (
+                  ""
+                )}
                 <Link href={routes.whishlist}>
                   <IoMdHeartEmpty
                     className={`text-xl cursor-pointer ${
@@ -108,9 +114,13 @@ export const Navbar = (): React.ReactElement => {
                 </Link>
               </div>
               <div className="relative">
-                <span className="absolute bottom-3 left-3 w-4 h-4 bg-primary text-white rounded-full flex items-center justify-center text-[12px]">
-                  {cart.length}
-                </span>
+                {cart.length > 0 ? (
+                  <span className="absolute bottom-3 left-3 w-4 h-4 bg-primary text-white rounded-full flex items-center justify-center text-[12px]">
+                    {cart.length}
+                  </span>
+                ) : (
+                  ""
+                )}
                 <Link href={routes.cart}>
                   {" "}
                   <IoCartOutline className="text-xl cursor-pointer" />

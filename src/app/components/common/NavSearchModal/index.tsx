@@ -12,10 +12,10 @@ import { CiSearch } from "react-icons/ci";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 interface Props {
-  setIsOpen: React.Dispatch<SetStateAction<boolean>>;
+  setIsOpenSearch: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export const NavSearchModal = ({ setIsOpen }: Props) => {
+export const NavSearchModal = ({ setIsOpenSearch }: Props) => {
   const [open, setOpen] = useState(true);
 
   return (
@@ -53,7 +53,7 @@ export const NavSearchModal = ({ setIsOpen }: Props) => {
           </DialogPanel>
           <IoCloseCircleOutline
             className="absolute top-3 right-3 text-2xl text-white"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setIsOpenSearch(false)}
           />
         </div>
       </div>
